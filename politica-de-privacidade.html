@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='pt_BR'>
+<head>
+   <meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Política de Privacidade</title>
+    <link rel='stylesheet' href='assets/css/minhaarea.css'>
+</head>
+<body>
+    <div class="card" style="text-align: left;">
+    <h1>Política de Privacidade para CEU VAGO Digital</h1>
+    <p>Esta Política de Privacidade descreve como suas informações pessoais são coletadas, usadas e compartilhadas quando você se cadastra ou usa https://digital.ceuvago.com/.</p>
+
+    <h2>Coleta de Informações Pessoais</h2>
+    <p>Quando você se cadastra em nosso site, coletamos as informações pessoais que você nos fornece, como seu nome e endereço de e-mail.</p>
+
+    <h2>WebAuthn</h2>
+    <p>O WebAuthn é um padrão web para autenticação segura na Web. 
+    Ele permite que os usuários se autentiquem em um serviço através de um dispositivo autenticador em vez de uma senha. 
+    Este módulo atualmente é apenas para fins demonstrativos de como funciona o WebAuthn.</p>
+    <p>WebAuthn é uma especificação da web que permite a autenticação sem senha. Com a impressão digital, é parte do conjunto de tecnologias que são frequentemente referidas como autenticação biométrica. Em um nível alto, o processo é geralmente assim:
+</p>
+<h2>Dispositivo utilizado e testado</h2>
+<p><img src="assets/img/usb.png"></p>
+<p>
+<b>Registro do usuário:</b> Um usuário inicialmente se registra em um site usando um método de autenticação tradicional (por exemplo, usuário e senha). Durante esse processo, o site pode solicitar que o usuário registre um método de autenticação biométrico, como uma impressão digital.
+</p><p>
+<b>Coleta de dados biométricos:</b> O dispositivo do usuário (como um smartphone ou computador portátil com um leitor de impressões digitais) coletará a impressão digital do usuário e criará uma representação digital desses dados. Essa representação é geralmente criptografada ou de outra forma segura para proteger a privacidade do usuário.
+</p><p>
+<b>Envio de dados ao servidor:</b> A representação digital da impressão digital do usuário é então enviada ao servidor do site. O servidor armazena essa representação para uso futuro.
+</p><p>
+<b>Autenticação:</b> Quando o usuário retorna ao site e precisa se autenticar, ele será solicitado a fornecer sua impressão digital novamente. O dispositivo do usuário coleta a impressão digital, cria uma representação digital e a envia para o servidor.
+</p><p>
+<b>Verificação:</b> O servidor compara a representação digital recebida com a que foi armazenada durante o processo de registro. Se elas corresponderem, o servidor confirmará que o usuário é quem afirma ser e permitirá que ele acesse o site.
+</p><p>
+<b>Resposta ao cliente:</b> O servidor envia uma resposta ao cliente, confirmando que a autenticação foi bem-sucedida.
+</p><p>
+Essa descrição é bastante simplificada e o processo real envolve vários passos técnicos complexos para garantir a segurança dos dados do usuário. Isso inclui coisas como o uso de criptografia de ponta a ponta, verificações de segurança rigorosas e o uso de chaves de segurança físicas ou outros dispositivos de autenticação em alguns casos.
+</p><p>
+Importante ressaltar que, ao usar WebAuthn com biometria, o servidor web nunca tem acesso direto aos dados biométricos (como a impressão digital real). Em vez disso, os dados biométricos são usados para criar uma chave de autenticação no dispositivo do usuário, e essa chave é o que é compartilhado com o servidor. Isso ajuda a proteger a 
+privacidade do usuário e garante que os dados biométricos não possam ser roubados, mesmo que o servidor seja comprometido.</p>
+<pre style="white-space: pre-line;text-align: left; background-color:black;color:white">
+ *
+ * Script de teste do servidor para a biblioteca WebAuthn.
+ *
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;CLIENTE&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;SERVIDOR
+ * ------------------------------------------------------------
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;REGISTRO
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;window.fetch<b style="color:red">------------></b>&emsp;|&emsp;&emsp;&emsp;&emsp;getCreateArgs (argumentos de criação)
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;navigator.credentials.create   <b style="color:yellow"><----------'</b>(criar credenciais de navegador)
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b style="color:red">'--------------------></b>     processCreate (processar criação)
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;alerta sucesso ou falha&emsp;&emsp;&emsp;|&emsp;<b style="color:yellow"><----------'</b>
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ * ------------------------------------------------------------
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;VALIDAÇÃO
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;window.fetch<b style="color:red">------------------></b>getGetArgs (obter argumentos de obtenção)
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;navigator.credentials.get   <b style="color:yellow"><------------'</b> (obter credenciais de navegador)
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b style="color:red">'-----------------------></b>  processGet (processar obtenção)
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|
+ *&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;alerta sucesso ou falha  | <b style="color:yellow"><------------'</b>
+ *
+ * ------------------------------------------------------------
+ *
+</pre>
+
+
+    <h2>Uso de Informações Pessoais</h2>
+    <p>Usamos as informações pessoais que coletamos de você para fornecer os recursos e funcionalidades do site. Também podemos usar suas informações pessoais para nos ajudar a melhorar e otimizar nosso site.</p>
+
+    <h2>Compartilhamento de Informações Pessoais</h2>
+    <p>Não compartilhamos suas informações pessoais com terceiros.</p>
+
+    <h2>Seus Direitos</h2>
+    <p>Você tem o direito de acessar as informações pessoais que temos sobre você e de solicitar que suas informações pessoais sejam corrigidas, atualizadas ou excluídas. Se você gostaria de exercer este direito, por favor, entre em contato conosco através das informações de contato abaixo.</p>
+
+    <h2>Alterações</h2>
+    <p>Podemos atualizar esta política de privacidade de tempos em tempos para refletir, por exemplo, mudanças em nossas práticas ou por outras razões operacionais, legais ou regulatórias.</p>
+
+    <h2>Contato</h2>
+    <p>Para obter mais informações sobre nossas práticas de privacidade, se você tiver dúvidas ou se quiser fazer uma reclamação, entre em contato conosco por e-mail no endereço suporte@ceuvago.com.</p>
+</div>
+ <div class="footer">
+        © 2023 Minha Aplicação. Todos os direitos reservados.<a href="index.html"> Inicial</a>
+    </div>
+</body>
+</html>

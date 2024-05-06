@@ -1,0 +1,2 @@
+[06-May-2024 11:46:38 America/Fortaleza] PHP Warning:  Undefined variable $credential in /home2/faust537/digital.ceuvago.com/server.php on line 294
+[06-May-2024 11:46:38 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/faust537/digital.ceuvago.com/server.php:294) in /home2/faust537/digital.ceuvago.com/server.php on line 318
