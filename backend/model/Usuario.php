@@ -13,8 +13,8 @@ class Usuario {
     private $userPresent;
     private $userVerified;
     private $userId;
-    private $userName; // Email
-    private $userDisplayName; // Nome
+    private $userName; 
+    private $userDisplayName; 
 
     public function __construct() { }
 
@@ -71,15 +71,14 @@ class Usuario {
         return $this->userId;
     }
 
-    public function getUserName() { // Email
+    public function getUserName() { 
         return $this->userName;
     }
 
-    public function getUserDisplayName() { // Nome
+    public function getUserDisplayName() { 
         return $this->userDisplayName;
     }
 
-    // Setters
     public function setRpId($rpId) {
         $this->rpId = $rpId;
     }
@@ -132,11 +131,11 @@ class Usuario {
         $this->userId = $userId;
     }
 
-    public function setUserName($userName) { // Email
+    public function setUserName($userName) { 
         $this->userName = $userName;
     }
 
-    public function setUserDisplayName($userDisplayName) { // Nome
+    public function setUserDisplayName($userDisplayName) { 
         $this->userDisplayName = $userDisplayName;
     }
 }

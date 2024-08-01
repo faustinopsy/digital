@@ -22,8 +22,8 @@ class UsuarioController {
         $this->usuario->setUserPresent($dados["userPresent"]);
         $this->usuario->setUserVerified($dados["userVerified"]);
         $this->usuario->setUserId($dados["userId"]);
-        $this->usuario->setUserName($dados["userName"]); // Email
-        $this->usuario->setUserDisplayName($dados["userDisplayName"]); // Nome
+        $this->usuario->setUserName($dados["userName"]); 
+        $this->usuario->setUserDisplayName($dados["userDisplayName"]); 
     
         $data = [
             "rpId" => $this->usuario->getRpId(),
@@ -38,9 +38,9 @@ class UsuarioController {
             "rootValid" => $this->usuario->getRootValid(),
             "userPresent" => $this->usuario->getUserPresent(),
             "userVerified" => $this->usuario->getUserVerified(),
-            "userId" => $this->usuario->getUserId(), // Converte userId de volta para hex antes de armazenar
-            "userName" => $this->usuario->getUserName(), // Email
-            "userDisplayName" => $this->usuario->getUserDisplayName() // Nome
+            "userId" => $this->usuario->getUserId(), 
+            "userName" => $this->usuario->getUserName(), 
+            "userDisplayName" => $this->usuario->getUserDisplayName() 
         ];
     
         $success = $this->db->create("users", $data);

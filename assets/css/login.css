@@ -221,7 +221,6 @@ button {
     font-size: 18px;
     padding: 10px;
     margin: 5px;
-    width: 98%;
 }
 button:hover {
     background-color: #00b374;
@@ -237,7 +236,10 @@ button:hover {
   display: none;
 }
 .form-container.active {
-  display: block;
+  display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
 }
 .privacy-popup {
   position: fixed;
