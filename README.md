@@ -54,18 +54,45 @@ Nesta aplicação, foi implementado o login por digital, utilizando a biblioteca
     -   Processa as respostas do cliente e verifica a autenticidade das credenciais.
 
 ### Fluxo de Comunicação
-               REGISTRO DE USUÁRIO
-   Cliente (Navegador)          |         Servidor (PHP)
---------------------------------|--------------------------------
-   Solicita argumentos          |    Gera argumentos para registro
-         para registro          |    e os envia ao cliente
---------------------------------------------|--------------------------------
-   Cria credenciais                                  |    Processa e armazena as credenciais
-   e as envia ao servidor       |    criptográficas do usuário
---------------------------------|--------------------------------
-   Login concluído              |    Retorna sucesso ou falha
+```
+*
+* Script de teste do servidor para a biblioteca WebAuthn.
+*
+*                CLIENTE       |    SERVIDOR
+* ------------------------------------------------------------
+*                              |
+*                          REGISTRO
+*                              |
+*    window.fetch------------> |    getCreateArgs (argumentos de criação)
+*                              |           |
+*                              |           |
+*  navigator.credentials.create <----------'(criar credenciais de navegador)
+*                    |         |
+*                    |         |
+*                    '--------------------> processCreate (processar criação)
+*                              |            |
+*                              |            |
+*    alerta sucesso ou falha   | <----------'
+*                              |
+* ------------------------------------------------------------
+*                              |
+*                         VALIDAÇÃO
+*                              |
+*      window.fetch------------------>getGetArgs (obter argumentos de obtenção)
+*                              |            |
+*                              |            |
+*    navigator.credentials.get <------------' (obter credenciais de navegador)
+*                 |            |
+*                 |            |
+*                 '-----------------------> processGet (processar obtenção)
+*                              |              |
+*                              |              |
+*      alerta sucesso ou falha | <------------'
+*
+* ------------------------------------------------------------
+*
 
-
+```
 ## Termos de Privacidade
 
 ### Dados Coletados
